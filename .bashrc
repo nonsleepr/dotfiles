@@ -127,3 +127,8 @@ fi
 ## Append > Read > ???
 #export PROMPT_COMMAND='history -a; history -r; history -n'
 
+# Bash git prompt
+# Requres https://github.com/magicmonty/bash-git-prompt.git in home directory
+# Via: http://tuxdiary.com/2015/02/21/powerlines/
+GIT_PROMPT_ONLY_IN_REPO=1
+source ~/.bash-git-prompt/gitprompt.sh
