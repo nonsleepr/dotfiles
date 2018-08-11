@@ -1,0 +1,192 @@
+filetype plugin indent on
+syntax on
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+set showmode
+set showcmd
+
+set autoindent 
+set smartindent
+set ruler
+set backspace=indent,eol,start
+set visualbell
+set nowrap
+
+set nocompatible
+
+" Ignore whitespace comparison for vimdiff
+set diffopt+=iwhite
+
+au FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
+inoremap # X#
+
+" Allow non-saved buffers
+" set hidden
+
+let mapleader = "\<Space>"
+
+" Uncomment below to make screen not flash on error
+" set vb t_vb=""
+
+set wildmenu
+set path=src/** " TODO: Instead of hardcoding, discover available dirs less ignored
+set wildignore+=**/.git/**,**/project/project/**,**/target/**
+
+" Activate Pathogen
+set runtimepath+=~/.vim/bundle/vim-pathogen
+execute pathogen#infect()
+
+let g:tmuxcomplete#trigger = 'omnifunc'
+
+set background=dark
+colorscheme solarized
+
+" Always show statusline
+set laststatus=2
+
+"let g:airline_powerline_fonts = 1
+"let g:Powerline_symbols = 'fancy'
+"let g:airline_theme="solarized"
+
+let g:scala_scaladoc_indent = 1
+
+let g:netrw_list_hide='.*\.o$,.*\.hi$,,.git/,.*\.swp$'
+
+set mouse+=a
+if &term =~ '^xterm'
+	" tmux knows the extended mouse mode
+	set ttymouse=xterm2
+endif
+
+" Shortcut to vertically split open file in ':' mode
+:cnoreabbrev <expr> vsf ((getcmdtype() is# ':' && getcmdline() is# 'vsf')?('vert sf'):('vsf'))
+
+set tags=tags;/
+
+" Save on lost focus
+"au FocusLost * :wa
+
+
+" set relativenumber
+set numberwidth=2
+" Remove line numbers for inactive windows
+"au WinLeave,BufLeave * :set norelativenumber nonumber
+"au WinEnter,BufEnter * :set relativenumber number
+
+" Update tags
+nnoremap <Leader>ts :silent !ctags -R src/ --exclude=target<CR>:redraw!<CR>
+
+autocmd StdinReadPre * let s:std_in=1
+
+" NERDTree
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+nnoremap <Leader>nt :NERDTree<CR>
+let g:NERDTreeQuitOnOpen=1
+
+
+" nnoremap / /\v
+" vnoremap / /\v
+set ignorecase
+set smartcase
+" set gdefault " applies substitutions globally
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <Leader><space> :noh<CR>
+nnoremap <tab> %
+vnoremap <tab> %
+
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=80
+
+highlight ColorColumn ctermbg=0
+highlight LineNr ctermfg=grey ctermbg=0
+highlight CursorLineNr ctermbg=0
+
+
+" Rainbow parentheses
+
+let g:rbpt_colorpairs = [
+    \ [ '13', '#6c71c4'],
+    \ [ '5',  '#d33682'],
+    \ [ '1',  '#dc322f'],
+    \ [ '9',  '#cb4b16'],
+    \ [ '3',  '#b58900'],
+    \ [ '2',  '#859900'],
+    \ [ '6',  '#2aa198'],
+    \ [ '4',  '#268bd2'],
+    \ ]
+let g:rbpt_max = 8
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
+xmap <Leader>a :EasyAlign<CR>
+nmap <Leader>a :EasyAlign<CR>
+
+let g:easy_align_delimiters = {
+\ '/': {
+\     'pattern':         '//\+\|/\*\|\*/',
+\     'delimiter_align': 'l',
+\     'ignore_groups':   ['!Comment'] }
+\ }
+
+" via https://vimrcfu.com/snippet/186
+" let terminal resize scale the internal windows
+autocmd VimResized * :wincmd =
+
+" via https://vimrcfu.com/snippet/179
+set undofile                " Save undo's after file closes
+set undodir=$HOME/.vim_undo " where to save undo histories
+set undolevels=1000         " How many undos
+set undoreload=10000        " number of lines to save for undo
+
+
+" CamelCaseMotion
+call camelcasemotion#CreateMotionMappings('<leader>')
+
+" FZF
+"source ~/.fzf/plugin/fzf.vim
+" FZF installed by homebrew
+source /usr/local/opt/fzf/plugin/fzf.vim
+
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>u :UndotreeToggle<CR>
+
+" Stolen from fzf-vim
+function! s:get_git_root()
+  let root = split(system('git rev-parse --show-toplevel'), '\n')[0]
+  return v:shell_error ? '' : root
+endfunction
+
+function! s:deleted_files()
+  let lines = []
+  let git_root = s:get_git_root()
+  let git_log = split(system('git log --all --name-status --format=%h --diff-filter=DR'), "\n")
+  let sha = ""
+  for line in git_log
+    if line =~ '^[0-9a-f]\{7,9}$'
+      let sha = line
+    elseif line =~ '.\+'
+      let tokens = split(line)
+      call add(lines, 'fugitive://'.git_root.'/.git//'.sha.'^/'.tokens[1])
+    endif
+  endfor
+  return lines
+endfunction
+
+command! GDFiles call fzf#run(fzf#wrap('gdfiles', {
+      \ 'source': s:deleted_files(),
+      \ 'options': ['--reverse', '-d', '\^\/', '--with-nth', '-1',
+      \   '--inline-info', '--prompt', 'Deleted files> ']}))
+
+nnoremap <Leader>d :GDFiles<CR>
