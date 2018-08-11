@@ -1,3 +1,11 @@
+## Shell
+
+Change the shell to ZSH:
+
+```sh
+chsh -s /usr/bin/zsh
+```
+
 ## Debian packages
 
 - hyper
