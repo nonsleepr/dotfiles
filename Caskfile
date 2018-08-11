@@ -1,0 +1,9 @@
+cask "iterm2"
+cask "oni"
+cask "slack"
+cask "karabiner-elements"
+cask "docker"
+
+cask "homebrew/cask-versions/java8"
+# sbt depends on java
+brew "sbt"
