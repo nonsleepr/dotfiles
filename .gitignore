@@ -1,0 +1,9 @@
+git/gitconfig.local.symlink
+
+*.swp
+scala/sbt.symlink/boot
+scala/sbt.symlink/preloaded
+scala/sbt.symlink/*/target
+scala/sbt.symlink/*/zinc
+scala/sbt.symlink/*/plugins/project
+scala/sbt.symlink/*/plugins/target
