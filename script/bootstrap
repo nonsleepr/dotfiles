@@ -137,6 +137,18 @@ install_dotfiles () {
   done
 }
 
+install_config_files () {
+  info 'installing .config files'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  for src in $(find -H "$DOTFILES_ROOT/config" -mindepth 1 -maxdepth 1 -not -path '*/.git/*')
+  do
+    dst="$HOME/.config/$(basename "${src%.*}")"
+    link_file "$src" "$dst"
+  done
+}
+
 init_submodules() {
   # TODO: Check for "-" at the beginning of "git submodule status" results
   git submodule update --init --recursive
@@ -145,6 +157,7 @@ init_submodules() {
 #init_submodules
 setup_gitconfig
 install_dotfiles
+install_config_files
 
 # If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]

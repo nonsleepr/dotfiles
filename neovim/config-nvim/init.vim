@@ -4,7 +4,7 @@ source ~/.vimrc
 
 tnoremap <Esc><Esc> <C-\><C-N>
 
-let g:python3_host_prog = '/home/abessonov2/neovim-py3-venv/bin/python'
+let g:python3_host_prog = expand('~/neovim-py3-venv/bin/python')
 
 " via http://eed3si9n.com/sbt-server-with-neovim
 set signcolumn=yes
