@@ -7,9 +7,6 @@
 [submodule "vim/vim.symlink/bundle/fzf.vim"]
 	path = vim/vim.symlink/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
-[submodule "vim/vim.symlink/bundle/nerdtree"]
-	path = vim/vim.symlink/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/vim.symlink/bundle/pep8-indent"]
 	path = vim/vim.symlink/bundle/pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent.git
@@ -19,9 +16,6 @@
 [submodule "vim/vim.symlink/bundle/targets.vim"]
 	path = vim/vim.symlink/bundle/targets.vim
 	url = https://github.com/wellle/targets.vim.git
-[submodule "vim/vim.symlink/bundle/tmux-complete.vim"]
-	path = vim/vim.symlink/bundle/tmux-complete.vim
-	url = https://github.com/wellle/tmux-complete.vim.git
 [submodule "vim/vim.symlink/bundle/undotree"]
 	path = vim/vim.symlink/bundle/undotree
 	url = https://github.com/mbbill/undotree.git
@@ -34,15 +28,9 @@
 [submodule "vim/vim.symlink/bundle/vim-gitgutter"]
 	path = vim/vim.symlink/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/vim.symlink/bundle/vim-minimap"]
-	path = vim/vim.symlink/bundle/vim-minimap
-	url = https://github.com/severin-lemaignan/vim-minimap.git
 [submodule "vim/vim.symlink/bundle/vim-pathogen"]
 	path = vim/vim.symlink/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "vim/vim.symlink/bundle/vim-peekaboo"]
-	path = vim/vim.symlink/bundle/vim-peekaboo
-	url = https://github.com/junegunn/vim-peekaboo.git
 [submodule "vim/vim.symlink/bundle/vim-repeat"]
 	path = vim/vim.symlink/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
