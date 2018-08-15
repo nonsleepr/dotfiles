@@ -42,7 +42,8 @@ execute pathogen#infect()
 let g:tmuxcomplete#trigger = 'omnifunc'
 
 set background=dark
-colorscheme solarized
+set termguicolors
+colorscheme solarized8
 
 " Always show statusline
 set laststatus=2
@@ -157,7 +158,9 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 " FZF
 "source ~/.fzf/plugin/fzf.vim
 " FZF installed by homebrew
-source /usr/local/opt/fzf/plugin/fzf.vim
+"source /usr/local/opt/fzf/plugin/fzf.vim
+"source ~/.vim/bundle/fzf.vim/plugin/fzf.vim
+source /home/linuxbrew/.linuxbrew/opt/fzf/plugin/fzf.vim
 
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>u :UndotreeToggle<CR>

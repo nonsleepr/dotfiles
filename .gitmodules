@@ -25,9 +25,6 @@
 [submodule "vim/vim.symlink/bundle/undotree"]
 	path = vim/vim.symlink/bundle/undotree
 	url = https://github.com/mbbill/undotree.git
-[submodule "vim/vim.symlink/bundle/vim-colors-solarized"]
-	path = vim/vim.symlink/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/vim.symlink/bundle/vim-easy-align"]
 	path = vim/vim.symlink/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
@@ -64,3 +61,6 @@
 [submodule "zsh/pure"]
 	path = zsh/pure
 	url = https://github.com/sindresorhus/pure.git
+[submodule "vim/vim.symlink/bundle/vim-solarized8"]
+	path = vim/vim.symlink/bundle/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git
