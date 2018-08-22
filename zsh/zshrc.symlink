@@ -49,3 +49,5 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 # Emacs mode
 set -o emacs
+
+export WORDCHARS=
