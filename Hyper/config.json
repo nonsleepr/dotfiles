@@ -1,0 +1,14 @@
+{
+	"windowPosition": [
+		0,
+		0
+	],
+	"windowSize": [
+		1366,
+		749
+	],
+	"hyper": {
+		"plugins": "{\"plugins\":[\"hyper-solarized-dark\"],\"localPlugins\":[]}",
+		"plugin-versions": "[[\"hyper-solarized-dark\",\"0.1.4\"]]"
+	}
+}
