@@ -144,7 +144,7 @@ install_config_files () {
 
   for src in $(find -H "$DOTFILES_ROOT/config" -mindepth 1 -maxdepth 1 -not -path '*/.git/*')
   do
-    dst="$HOME/.config/$(basename "${src%.*}")"
+    dst="$HOME/.config/$(basename "$src")"
     link_file "$src" "$dst"
   done
 }
