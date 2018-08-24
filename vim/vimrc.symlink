@@ -189,3 +189,6 @@ command! GDFiles call fzf#run(fzf#wrap('gdfiles', {
       \   '--inline-info', '--prompt', 'Deleted files> ']}))
 
 nnoremap <Leader>d :GDFiles<CR>
+
+" Vim Ale autocompletion
+let g:ale_completion_enabled = 1

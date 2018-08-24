@@ -49,3 +49,6 @@
 [submodule "vim/vim.symlink/bundle/vim-solarized8"]
 	path = vim/vim.symlink/bundle/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "vim/vim.symlink/bundle/ale"]
+	path = vim/vim.symlink/bundle/ale
+	url = git@github.com:w0rp/ale.git
