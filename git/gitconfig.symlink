@@ -4,7 +4,8 @@
 [hub]
         protocol = https
 [alias]
-	tree = log --oneline --graph --all --decorate
+        tree = log --oneline --graph --all --decorate
+        open = !open $(git remote get-url origin | sed 's/git@\\(.*\\):\\(.*\\)/https:\\/\\/\\1\\/\\2/')
 [color]
         diff = auto
         status = auto
@@ -12,13 +13,13 @@
         ui = true
 [core]
         excludesfile = ~/.gitignore
-	editor = nvim
+        editor = nvim
 [apply]
         whitespace = nowarn
 [mergetool]
         keepBackup = false
 [diff]
-	tool = nvim -d
+        tool = nvim -d
 [difftool]
         prompt = false
 [help]
