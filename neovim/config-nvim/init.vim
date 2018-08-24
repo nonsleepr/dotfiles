@@ -15,7 +15,7 @@ set signcolumn=yes
 let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {
-    \ 'scala': ['node', expand('~/.local/bin/sbt-server-stdio.js')]
+    \ 'scala': ['node', expand('$ZSH/scala/sbt-server-stdio.js')]
     \ }
 
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
