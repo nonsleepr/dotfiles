@@ -192,3 +192,9 @@ nnoremap <Leader>d :GDFiles<CR>
 
 " Vim Ale autocompletion
 let g:ale_completion_enabled = 1
+
+" C-h,j,k,l navigation for windows
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
