@@ -160,3 +160,5 @@ exec_always --no-startup-id xscreensaver-command -exit &
 exec_always --no-startup-id xscreensaver -no-splash &     
 exec_always --no-startup-id xss-lock -- i3lock &
 exec_always --no-startup-id libinput-gestures-setup start
+
+bindsym $mod+Shift+s exec "scrot ~/Downloads/Screenshot%Y-%m-%d%H:%M:%S.png"
