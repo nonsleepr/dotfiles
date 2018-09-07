@@ -42,8 +42,7 @@ execute pathogen#infect()
 let g:tmuxcomplete#trigger = 'omnifunc'
 
 set background=dark
-set termguicolors
-colorscheme solarized8
+colorscheme solarized
 
 " Always show statusline
 set laststatus=2
@@ -155,8 +154,10 @@ set undoreload=10000        " number of lines to save for undo
 " CamelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
+" FZF
+"source ~/.fzf/plugin/fzf.vim
 " FZF installed by homebrew
-execute 'source '.systemlist("brew --prefix")[0].'/opt/fzf/plugin/fzf.vim'
+source /usr/local/opt/fzf/plugin/fzf.vim
 
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>u :UndotreeToggle<CR>
@@ -198,3 +199,6 @@ nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
+
+" Delay vim-peekaboo
+let g:peekaboo_delay=200
