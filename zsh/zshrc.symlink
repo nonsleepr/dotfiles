@@ -51,3 +51,8 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 set -o emacs
 
 export WORDCHARS=
+
+# Edit in $EDITOR
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
