@@ -1,3 +1,6 @@
+# Emacs mode
+set -o emacs
+
 # shortcut to this dotfiles path is $DOTFILES
 DOTFILES=$( cd "$(dirname $(readlink "$HOME/.zshrc"))/.."; pwd -P )
 
@@ -11,6 +14,7 @@ fi
 
 # all of our zsh files
 typeset -U config_files
+# TODO: Recursively go over all levels
 config_files=($DOTFILES/*/*.zsh)
 
 # load the path files
@@ -35,6 +39,32 @@ do
   source $file
 done
 
+### # Ordered completion script execution
+### typeset -A completion_files
+### 
+### for file in ${(M)config_files:#*/??-completion.zsh}; do
+###   local files
+###   typeset -U files
+###   files=(${completion_files[${file##*/}]})
+###   files+=$file
+###   completion_files[${file##*/}]=$files
+###   unset files
+### done
+### 
+### # load every completion after autocomplete loads
+### for k in "${(@k)completion_files}"; do
+###   local files
+###   typeset -U files
+###   files=(${completion_files[$k]})
+###   for file in $files; do
+###     echo $file
+###     source $file
+###   done
+###   unset files
+### done
+### 
+### unset completion_files
+
 unset config_files
 
 # Better history
@@ -45,10 +75,6 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
-
-
-# Emacs mode
-set -o emacs
 
 export WORDCHARS=
 

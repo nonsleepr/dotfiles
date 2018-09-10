@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
 #
 # bootstrap installs things.
-
-cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd -P)
-
 set -e
 
+SCRIPT_NAME=$0
+SCRIPT_BASENAME=$(basename $0)
+SCRIPT_DIR=$(cd "$(dirname $SCRIPT_NAME)"; pwd)
+DOTFILES_ROOT=$(cd "$SCRIPT_DIR/.."; pwd)
+
+pushd "$DOTFILES_ROOT" > /dev/null
+  if [ -L "$SCRIPT_DIR" ]; then
+    # "pwd -P" would follow *all* symlinks
+    printf "\r  [ \033[00;34m..\033[0m ] $SCRIPT_DIR is a symlink, going down...\n"
+    LINKED_SCRIPT_DIR=$(cd $(readlink $SCRIPT_DIR); pwd)
+    $(readlink $SCRIPT_DIR)/$SCRIPT_BASENAME
+  fi
+popd > /dev/null
+
 echo ''
+printf "\r  [ \033[00;34m..\033[0m ] Bootstrapping $DOTFILES_ROOT...\n"
+cd "$DOTFILES_ROOT"
 
 info () {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
@@ -28,24 +40,26 @@ fail () {
 }
 
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
-  then
-    info 'setup gitconfig'
-
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
+  if [ ! -e "$HOME/.gitconfig.local" ]; then
+    if ! [ -f git/gitconfig.local.symlink ]
     then
-      git_credential='osxkeychain'
+      info 'setup gitconfig'
+  
+      git_credential='cache'
+      if [ "$(uname -s)" == "Darwin" ]
+      then
+        git_credential='osxkeychain'
+      fi
+  
+      user ' - What is your github author name?'
+      read -e git_authorname
+      user ' - What is your github author email?'
+      read -e git_authoremail
+  
+      sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+  
+      success 'gitconfig'
     fi
-
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
-
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
-
-    success 'gitconfig'
   fi
 }
 
@@ -139,6 +153,9 @@ install_dotfiles () {
 
 install_config_files () {
   info 'installing .config files'
+  if [ ! -e "$HOME/.config" ]; then
+    mkdir "$HOME/.config"
+  fi
 
   local overwrite_all=false backup_all=false skip_all=false
 
@@ -151,25 +168,14 @@ install_config_files () {
 
 init_submodules() {
   # TODO: Check for "-" at the beginning of "git submodule status" results
-  git submodule update --init --recursive
+  git submodule update --init --recursive || true
 }
 
-#init_submodules
+# TODO: Init submodules *before* jumping through symlinks
+init_submodules
 setup_gitconfig
 install_dotfiles
 install_config_files
-
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot | while read -r data; do info "$data"; done
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
 
 echo ''
 echo '  All installed!'
