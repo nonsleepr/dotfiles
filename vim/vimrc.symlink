@@ -199,5 +199,32 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 
-" Delay vim-peekaboo
-let g:peekaboo_delay=200
+" Config vim-peekaboo
+let g:peekaboo_prefix = '<Leader>'
+let g:peekaboo_ins_prefix = '<c-x>'
+
+" Curly braces arguments
+let g:targets_argOpening = '[({[]'
+let g:targets_argClosing = '[]})]'
+
+" listchars - Highlight offending chars
+if &enc =~ '^u\(tf\|cs\)'   " When running in a Unicode environment,
+  set list
+
+  let s:arr = nr2char(9655) " using U+25B7 (▷) for an arrow
+  let s:dot = nr2char(8901) " using U+22C5 (⋅) for a very light dot
+
+  " display tabs as an arrow followed by some dots (▷⋅⋅⋅⋅⋅⋅⋅),
+  exe "set listchars=tab:"    . s:arr . s:dot
+  " and display trailing and non-breaking spaces as U+22C5 (⋅).
+  exe "set listchars+=trail:" . s:dot
+  exe "set listchars+=nbsp:"  . s:dot
+
+  " Also show an arrow+space (↪ ) at the beginning of any wrapped long lines
+  let &sbr=nr2char(8618).' '
+endif
+
+" Scala arrows (Hold shift when entering)
+inoremap +> <C-R>=nr2char(8658)<CR>
+inoremap _> <C-R>=nr2char(8594)<CR>
+inoremap <_ <C-R>=nr2char(8592)<CR>
