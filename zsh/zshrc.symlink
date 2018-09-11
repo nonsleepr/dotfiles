@@ -41,7 +41,7 @@ done
 
 ### # Ordered completion script execution
 ### typeset -A completion_files
-### 
+###
 ### for file in ${(M)config_files:#*/??-completion.zsh}; do
 ###   local files
 ###   typeset -U files
@@ -50,7 +50,7 @@ done
 ###   completion_files[${file##*/}]=$files
 ###   unset files
 ### done
-### 
+###
 ### # load every completion after autocomplete loads
 ### for k in "${(@k)completion_files}"; do
 ###   local files
@@ -62,7 +62,7 @@ done
 ###   done
 ###   unset files
 ### done
-### 
+###
 ### unset completion_files
 
 unset config_files
