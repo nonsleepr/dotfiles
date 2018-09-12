@@ -228,3 +228,12 @@ endif
 inoremap +> <C-R>=nr2char(8658)<CR>
 inoremap _> <C-R>=nr2char(8594)<CR>
 inoremap <_ <C-R>=nr2char(8592)<CR>
+
+" Language Client
+
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls']
+    \ }
+
+autocmd FileType python :LanguageClientStart<CR>
