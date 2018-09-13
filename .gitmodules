@@ -1,9 +1,6 @@
 [submodule "vim/vim.symlink/bundle/CamelCaseMotion"]
 	path = vim/vim.symlink/bundle/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion.git
-[submodule "vim/vim.symlink/bundle/LanguageClient-neovim"]
-	path = vim/vim.symlink/bundle/LanguageClient-neovim
-	url = https://github.com/eed3si9n/LanguageClient-neovim.git
 [submodule "vim/vim.symlink/bundle/fzf.vim"]
 	path = vim/vim.symlink/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
@@ -55,3 +52,7 @@
 [submodule "vim/vim.symlink/bundle/vim-go"]
 	path = vim/vim.symlink/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule "neovim/config-nvim/bundle/LanguageClient"]
+	path = neovim/config-nvim/bundle/LanguageClient
+	url = https://github.com/autozimu/LanguageClient-neovim.git
+	branch = next

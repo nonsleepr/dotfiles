@@ -13,10 +13,14 @@ let g:python3_host_prog = expand('~/venvs/py3-neovim/bin/python')
 " via http://eed3si9n.com/sbt-server-with-neovim
 set signcolumn=yes
 
+" Language Client
 let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {
+    \ 'python': [expand('~/venvs/py3-neovim/bin/pyls')],
     \ 'scala': ['node', expand('$DOTFILES/scala/sbt-server-stdio.js')]
     \ }
+
+autocmd FileType python :LanguageClientStart<CR>
 
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
