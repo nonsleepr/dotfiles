@@ -7,3 +7,6 @@ tags
 dist/
 build/
 __pycache__
+Pipfile
+Pipfile.lock
+.python-version
