@@ -17,9 +17,13 @@ set signcolumn=yes
 let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {
-    \ 'python': [expand('~/venvs/py3-neovim/bin/pyls')],
+    \ 'python': ['~/venvs/pyls/bin/pyls'],
     \ 'scala': ['node', expand('$DOTFILES/scala/sbt-server-stdio.js')]
     \ }
+
+" let g:LanguageClient_loggingLevel = 'DEBUG'
+" let g:LanguageClient_loggingFile =  expand('~/LanguageClient.log')
+" let g:LanguageClient_serverStderr = expand('~/LanguageServer.log')
 
 autocmd FileType python :LanguageClientStart<CR>
 
