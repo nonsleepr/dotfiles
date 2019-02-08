@@ -170,14 +170,14 @@ endfunction
 function! s:deleted_files()
   let lines = []
   let git_root = s:get_git_root()
-  let git_log = split(system('git log --all --name-status --format=%h --diff-filter=DR'), "\n")
+  let git_log = split(system('git log --all --name-status --format=%P --diff-filter=DR'), "\n")
   let sha = ""
   for line in git_log
-    if line =~ '^[0-9a-f]\{7,9}$'
+    if line =~ '^[0-9a-f]\{40}$'
       let sha = line
     elseif line =~ '.\+'
       let tokens = split(line)
-      call add(lines, 'fugitive://'.git_root.'/.git//'.sha.'^/'.tokens[1])
+      call add(lines, 'fugitive://'.git_root.'/.git//'.sha.'/'.tokens[1])
     endif
   endfor
   return lines
@@ -185,7 +185,7 @@ endfunction
 
 command! GDFiles call fzf#run(fzf#wrap('gdfiles', {
       \ 'source': s:deleted_files(),
-      \ 'options': ['--reverse', '-d', '\^\/', '--with-nth', '-1',
+      \ 'options': ['--reverse', '-d', '/.git//[0-9a-f]{40}/', '--with-nth', '-1',
       \   '--inline-info', '--prompt', 'Deleted files> ']}))
 
 nnoremap <Leader>d :GDFiles<CR>
