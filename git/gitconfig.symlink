@@ -4,7 +4,8 @@
 [hub]
         protocol = https
 [alias]
-        tree = log --oneline --graph --all --decorate
+        lg = log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(magenta)- %an%C(reset)%C(yellow)%d%C(reset)' --all
+        tree = !"git lg"
         open = !open $(git remote get-url origin | sed 's/git@\\(.*\\):\\(.*\\)/https:\\/\\/\\1\\/\\2/')
 [color]
         diff = auto
