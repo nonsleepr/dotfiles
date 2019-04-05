@@ -62,3 +62,6 @@
 [submodule "gdb/gdb-dashboard"]
 	path = gdb/gdb-dashboard
 	url = https://github.com/cyrus-and/gdb-dashboard.git
+[submodule "vim/vim.symlink/bundle/vim-flog"]
+	path = vim/vim.symlink/bundle/vim-flog
+	url = https://github.com/rbong/vim-flog.git
