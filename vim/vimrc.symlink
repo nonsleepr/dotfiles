@@ -230,3 +230,5 @@ inoremap _> <C-R>=nr2char(8594)<CR>
 inoremap <_ <C-R>=nr2char(8592)<CR>
 
 autocmd FileType markdown :setlocal spell spelllang=en_us
+
+autocmd FileType python BracelessEnable +indent +fold +highlight-cc
