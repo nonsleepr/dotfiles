@@ -65,3 +65,6 @@
 [submodule "vim/vim.symlink/bundle/vim-flog"]
 	path = vim/vim.symlink/bundle/vim-flog
 	url = https://github.com/rbong/vim-flog.git
+[submodule "vim/vim.symlink/bundle/quick-scope"]
+	path = vim/vim.symlink/bundle/quick-scope
+	url = https://github.com/unblevable/quick-scope.git

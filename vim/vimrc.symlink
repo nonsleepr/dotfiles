@@ -8,7 +8,7 @@ set expandtab
 set showmode
 set showcmd
 
-set autoindent 
+set autoindent
 set smartindent
 set ruler
 set backspace=indent,eol,start
@@ -232,3 +232,7 @@ inoremap <_ <C-R>=nr2char(8592)<CR>
 autocmd FileType markdown :setlocal spell spelllang=en_us
 
 autocmd FileType python BracelessEnable +indent +fold +highlight-cc
+
+" === quick-scope ===
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
