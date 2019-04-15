@@ -10,7 +10,6 @@ tnoremap <expr> <C-R><C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 let g:python3_host_prog = expand('~/venvs/neovim/bin/python')
 
 " via http://eed3si9n.com/sbt-server-with-neovim
-set signcolumn=yes
 
 " Language Client
 let g:LanguageClient_autoStart = 1

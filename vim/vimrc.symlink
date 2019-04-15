@@ -233,6 +233,6 @@ autocmd FileType markdown :setlocal spell spelllang=en_us
 
 autocmd FileType python BracelessEnable +indent +fold +highlight-cc
 
-" === quick-scope ===
-" Trigger a highlight in the appropriate direction when pressing these keys:
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+set signcolumn=yes
+set foldmethod=marker
+
