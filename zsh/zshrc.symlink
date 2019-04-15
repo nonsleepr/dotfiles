@@ -1,5 +1,5 @@
 # Emacs mode
-set -o emacs
+#set -o emacs
 
 # shortcut to this dotfiles path is $DOTFILES
 DOTFILES=$( cd "$(dirname $(readlink "$HOME/.zshrc"))/.."; pwd -P )
@@ -81,9 +81,13 @@ export WORDCHARS=
 # Edit in $EDITOR
 autoload -z edit-command-line
 zle -N edit-command-line
-bindkey "^X^E" edit-command-line
 
-bindkey "^F" forward-word
+# Vi mode
+set -o vi
+# bindkey "^X^E" edit-command-line
+bindkey -v
+bindkey "^N" forward-word
+bindkey "^X^L" fzf-history-widget
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
