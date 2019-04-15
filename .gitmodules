@@ -68,3 +68,6 @@
 [submodule "vim/vim.symlink/bundle/quick-scope"]
 	path = vim/vim.symlink/bundle/quick-scope
 	url = https://github.com/unblevable/quick-scope.git
+[submodule "vim/vim.symlink/bundle/vim-scriptease"]
+	path = vim/vim.symlink/bundle/vim-scriptease
+	url = https://github.com/tpope/vim-scriptease.git
