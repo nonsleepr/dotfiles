@@ -236,3 +236,5 @@ autocmd FileType python BracelessEnable +indent +fold +highlight-cc
 set signcolumn=yes
 set foldmethod=marker
 
+" === vimspector ===
+let g:vimspector_enable_mappings = 'HUMAN'

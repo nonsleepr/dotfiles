@@ -52,10 +52,6 @@
 [submodule "vim/vim.symlink/bundle/vim-go"]
 	path = vim/vim.symlink/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
-[submodule "neovim/config-nvim/bundle/LanguageClient"]
-	path = neovim/config-nvim/bundle/LanguageClient
-	url = https://github.com/autozimu/LanguageClient-neovim.git
-	branch = next
 [submodule "vim/vim.symlink/bundle/braceless.vim"]
 	path = vim/vim.symlink/bundle/braceless.vim
 	url = https://github.com/tweekmonster/braceless.vim.git
@@ -71,3 +67,6 @@
 [submodule "vim/vim.symlink/bundle/vim-scriptease"]
 	path = vim/vim.symlink/bundle/vim-scriptease
 	url = https://github.com/tpope/vim-scriptease.git
+[submodule "neovim/config-nvim/bundle/coc.nvim"]
+	path = neovim/config-nvim/bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
