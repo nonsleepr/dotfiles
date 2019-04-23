@@ -67,3 +67,6 @@
 [submodule "neovim/config-nvim/bundle/coc.nvim"]
 	path = neovim/config-nvim/bundle/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
+[submodule "vim/vim.symlink/bundle/vim-rhubarb"]
+	path = vim/vim.symlink/bundle/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
