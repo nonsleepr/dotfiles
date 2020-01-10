@@ -1,6 +1,7 @@
 # Local/private config goes in the include
 [include]
         path = ~/.gitconfig.local
+        path = ~/.gitconfig.github
 [hub]
         protocol = https
 [alias]
@@ -14,7 +15,7 @@
         ui = true
 [core]
         excludesfile = ~/.gitignore
-        editor = nvim
+        editor = nvr -cc split --remote-wait-silent
 [apply]
         whitespace = nowarn
 [merge]
@@ -24,7 +25,7 @@
 [mergetool "nvim"]
         cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [diff]
-        tool = nvim
+        tool = nvr -cc split --remote-wait-silent
 [difftool]
         prompt = false
 [difftool "nvim"]
