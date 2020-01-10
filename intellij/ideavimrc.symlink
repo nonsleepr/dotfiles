@@ -1,0 +1,5 @@
+set number relativenumber
+
+let mapleader = "\<Space>"
+
+nnoremap <Leader><Space> :noh<CR>
