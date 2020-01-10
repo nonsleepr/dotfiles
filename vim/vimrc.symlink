@@ -71,7 +71,7 @@ set tags=tags;/
 "au FocusLost * :wa
 
 
-" set relativenumber
+set number relativenumber
 set numberwidth=2
 " Remove line numbers for inactive windows
 "au WinLeave,BufLeave * :set norelativenumber nonumber
@@ -101,9 +101,9 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 set wrap
-set textwidth=119
+set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=120
+set colorcolumn=80
 
 highlight ColorColumn ctermbg=0
 highlight LineNr ctermfg=grey ctermbg=0
@@ -159,7 +159,9 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 execute 'source '.systemlist("brew --prefix")[0].'/opt/fzf/plugin/fzf.vim'
 
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>u :UndotreeToggle<CR>
+nnoremap <Leader><Leader>u :UndotreeToggle<CR>
+
+nnoremap <Leader>u :GitGutterUndoHunk<CR>
 
 " Stolen from fzf-vim
 function! s:get_git_root()
