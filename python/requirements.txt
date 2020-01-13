@@ -20,3 +20,4 @@ bugwarrior[jira,keyring]
 tasklib
 neovim
 pynvim
+neovim-remote
