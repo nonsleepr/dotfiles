@@ -73,3 +73,6 @@
 [submodule "vim/vim.symlink/bundle/vimwiki"]
 	path = vim/vim.symlink/bundle/vimwiki
 	url = https://github.com/vimwiki/vimwiki
+[submodule "vim/vim.symlink/bundle/taskwiki"]
+	path = vim/vim.symlink/bundle/taskwiki
+	url = https://github.com/tbabej/taskwiki
