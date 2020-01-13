@@ -240,3 +240,14 @@ set foldmethod=marker
 
 " === vimspector ===
 let g:vimspector_enable_mappings = 'HUMAN'
+" === For neovim-remote
+
+autocmd FileType gitcommit,gitrebase,gitconfig,taskedit set bufhidden=delete
+
+" VimWiki
+"
+let g:vimwiki_list = [{
+      \ 'syntax': 'markdown',
+      \ 'ext': '.md'
+      \ }]
+let g:taskwiki_markup_syntax = 'markdown'

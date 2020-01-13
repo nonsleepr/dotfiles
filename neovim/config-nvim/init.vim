@@ -8,8 +8,6 @@ tnoremap <Esc><Esc> <C-\><C-N>
 " Works except for = register (expression)
 tnoremap <expr> <C-R><C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
-let g:python3_host_prog = expand('~/venvs/neovim/bin/python')
-
 " Enter terminal on open
 autocmd TermOpen * startinsert
 
