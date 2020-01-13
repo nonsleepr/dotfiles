@@ -1,0 +1,22 @@
+# Dev tools
+tox
+black
+poetry
+pipenv
+
+# Meta: List of root dependencies
+pipdeptree
+
+# Utils
+sparklines
+httpie
+httpie-negotiate
+
+# Reverse engineering
+frida-tools
+
+# Productivity
+bugwarrior[jira,keyring]
+tasklib
+neovim
+pynvim
