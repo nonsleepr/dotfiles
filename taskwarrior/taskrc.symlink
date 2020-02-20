@@ -44,7 +44,7 @@ search.case.sensitive=no
 uda.blocks.type=string
 uda.blocks.label=Blocks
 
-context.work=pro:work or +work
+context.work=pro.not:personal -personal -home
 context.home=project.not:work and -work
 context.mobile=+mobile
 
@@ -53,16 +53,17 @@ taskd.credentials=Home/Alexander Bessonov/785119c2-1202-4652-aa62-412bfc235e72
 taskd.certificate=~/.task/alexander-bessonov.cert.pem
 taskd.key=~/.task/alexander-bessonov.key.pem
 taskd.ca=~/.task/letsencryptauthorityx3.pem.txt
-#taskd.server=192.168.10.100:53589
+taskd.server=192.168.10.100:53589
 #taskd.server=hassio.nonsleepr.me:53589
-taskd.server=localhost:53589
+#taskd.server=localhost:53589
 taskd.trust=ignore hostname
 
-alias.bm=project:work.blasting-machine
-context.current-work=pro:work.blasting-machine
-urgency.user.tag.sideproject.coefficient=-5.0
+# It would be nice if the context influenced the urgency as well
+urgency.user.tag.work.coefficient=5.0
 
-report.now.columns    =id,project,description.count
-report.now.filter     =status:pending limit:1
-report.now.labels     =,,
-report.now.sort       =urgency-
+urgency.user.tag.android.coefficient=-3.0
+urgency.user.tag.external.coefficient=-2.0
+urgency.user.tag.productivity.coefficient=-2.0
+urgency.user.tag.sideproject.coefficient=-8.0
+
+report.next.filter=status:pending limit:15
