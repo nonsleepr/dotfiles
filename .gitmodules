@@ -76,3 +76,6 @@
 [submodule "vim/vim.symlink/bundle/taskwiki"]
 	path = vim/vim.symlink/bundle/taskwiki
 	url = https://github.com/tbabej/taskwiki
+[submodule "mc/mc-solarized-skin"]
+	path = mc/mc-solarized-skin
+	url = https://github.com/denius/mc-solarized-skin.git
