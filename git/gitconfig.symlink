@@ -8,6 +8,7 @@
         lg = log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(magenta)- %an%C(reset)%C(yellow)%d%C(reset)' --all
         tree = !"git lg"
         open = !open $(git remote get-url origin | sed 's/git@\\(.*\\):\\(.*\\)/https:\\/\\/\\1\\/\\2/')
+        co = checkout
 [color]
         diff = auto
         status = auto
