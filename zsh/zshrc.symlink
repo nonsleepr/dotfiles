@@ -95,5 +95,5 @@ bindkey "^R" fzf-history-widget
 # Make directory and enter it
 alias md='function __md() { mkdir -p "$1"; cd "$1"; unset -f __md; }; __md'
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+export PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
