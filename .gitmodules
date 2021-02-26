@@ -79,3 +79,6 @@
 [submodule "mc/mc-solarized-skin"]
 	path = mc/mc-solarized-skin
 	url = https://github.com/denius/mc-solarized-skin.git
+[submodule "vim/vim.symlink/bundle/fzf"]
+	path = vim/vim.symlink/bundle/fzf
+	url = https://github.com/junegunn/fzf.git
