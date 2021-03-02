@@ -6,7 +6,8 @@ Set-PoshPrompt -Theme pure
 Set-PSReadLineOption -Colors @{"Parameter" = [ConsoleColor]::Blue}
 Set-PSReadLineOption -Colors @{"Operator" = [ConsoleColor]::White}
 
-Set-PSReadLineOption -EditMode Vi
+#Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -PredictionSource History
 
 # Store previous command's output in $__
@@ -17,9 +18,12 @@ $Env:FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 $Env:Path += ";$Env:USERPROFILE\bin"
 
-# === Neovim
+# === Neovim ===
 function Start-Neovim {
   nvim $args
 }
 
 New-Alias vi Start-Neovim
+
+# === Scala ===
+$Env:COURSIER_HOME = $Env:AppData.Replace("\", "/") + "/Coursier"
