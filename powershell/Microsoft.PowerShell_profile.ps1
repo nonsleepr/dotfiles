@@ -8,7 +8,10 @@ Set-PSReadLineOption -Colors @{"Operator" = [ConsoleColor]::White}
 
 #Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineOption -EditMode Emacs
-Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
+
+# This allows me to use Ctrl-x,Ctrl-e to edit the stuff
+$Env:EDITOR = "nvim"
 
 # Store previous command's output in $__
 $PSDefaultParameterValues['Out-Default:OutVariable'] = '__'
