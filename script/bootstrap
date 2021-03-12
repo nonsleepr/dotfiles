@@ -40,7 +40,7 @@ pushd "$DOTFILES_ROOT" > /dev/null
     # "pwd -P" would follow *all* symlinks
     printf "\r  [ \033[00;34m..\033[0m ] $SCRIPT_DIR is a symlink, going down...\n"
     LINKED_SCRIPT_DIR=$(cd $(readlink $SCRIPT_DIR); pwd)
-    $(readlink $SCRIPT_DIR)/$SCRIPT_BASENAME
+    $(readlink $SCRIPT_DIR)/$SCRIPT_BASENAME "$@"
   fi
 popd > /dev/null
 
@@ -198,7 +198,7 @@ init_submodules() {
   git submodule update --init --recursive || true
 }
 
-parse_args
+parse_args "$@"
 # TODO: Init submodules *before* jumping through symlinks
 init_submodules
 if [ "$skip_gitconfig" != "true" ]
