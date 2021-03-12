@@ -18,7 +18,7 @@ parse_args() {
       --skip-all)
         skip_all=true
         ;;
-      --owerwrite-all)
+      --overwrite-all)
         overwrite_all=true
         ;;
       --backup-all)
