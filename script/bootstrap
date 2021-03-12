@@ -3,6 +3,33 @@
 # bootstrap installs things.
 set -e
 
+# Defaults block
+skip_gitconfig=
+skip_all=
+overwrite_all=
+backup_all=
+
+parse_args() {
+  for arg in "$@"; do
+    case "$arg" in
+      --no-gitconfig)
+        skip_gitconfig=true
+        ;;
+      --skip-all)
+        skip_all=true
+        ;;
+      --owerwrite-all)
+        overwrite_all=true
+        ;;
+      --backup-all)
+        backup_all=true
+        ;;
+      *)
+        ;;
+    esac
+  done
+}
+
 SCRIPT_NAME=$0
 SCRIPT_BASENAME=$(basename $0)
 SCRIPT_DIR=$(cd "$(dirname $SCRIPT_NAME)"; pwd)
@@ -142,7 +169,7 @@ link_file () {
 install_dotfiles () {
   info 'installing dotfiles'
 
-  local overwrite_all=false backup_all=false skip_all=false
+  #local overwrite_all=false backup_all=false skip_all=false
 
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 3 -name '*.symlink' -not -path '*/.git/*')
   do
@@ -171,9 +198,13 @@ init_submodules() {
   git submodule update --init --recursive || true
 }
 
+parse_args
 # TODO: Init submodules *before* jumping through symlinks
 init_submodules
-setup_gitconfig
+if [ "$skip_gitconfig" != "true" ]
+then
+  setup_gitconfig
+fi
 install_dotfiles
 install_config_files
 
