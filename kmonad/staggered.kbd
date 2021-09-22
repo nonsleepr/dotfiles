@@ -1,0 +1,95 @@
+(defcfg
+  ;; For Windows
+  input  (low-level-hook)
+  output (send-event-sink)
+
+  ;; Comment this is you want unhandled events not to be emitted
+  fallthrough true
+
+  ;; Set this to false to disable any command-execution in KMonad
+  allow-cmd false
+)
+
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet cmp  rctl
+)
+
+(defalias
+  c_c (tap-hold-next-release 200 c lctl)
+  c_, (tap-hold-next-release 200 , rctl)
+
+  a_x (tap-hold-next-release 200 x lalt)
+  a_. (tap-hold-next-release 200 . ralt)
+
+  g_t (tap-hold-next-release 200 t lmet)
+  g_y (tap-hold-next-release 200 y rmet)
+
+  s_z (tap-hold-next-release 100 z lsft)
+  s_/ (tap-hold-next-release 100 / rsft)
+
+  low (layer-toggle lower)
+  rai (layer-toggle raise)
+
+  b_h (tap-hold-next 75 h (layer-toggle h_combo))
+  b_j (tap-hold-next 75 j (layer-toggle j_combo))
+
+  ori (tap-hold 500 rctl (layer-switch original))
+  erg (tap-hold 500 rctl (layer-switch base))
+)
+
+
+(deflayer original
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    @erg
+)
+
+(deflayer base
+  XX   q    w    e    r    @g_t XX   @g_y u    i    o    p    XX   XX
+  XX   a    s    d    f    g    XX   @b_h @b_j k    l    ;    XX   XX
+  XX   z    @a_x @c_c v    b    XX   n    m    @c_, @a_. /    XX
+  XX   XX   XX   @low spc  XX   XX   ret  @rai XX   XX   XX
+  XX   XX   XX             XX             XX   XX   XX   @ori
+)
+
+(deflayer lower
+  XX   _    _    _    _    _    XX   _    \_   +    [    ]    XX   XX
+  XX   !    @    #    $    %    XX   ^    &    *    \(   \)   XX   XX
+  XX   _    _    _    _    _    XX   _    _    _    {    }    XX
+  XX   XX   XX   XX   _    _    _    _    XX   XX   XX   XX
+  XX   XX   XX             XX             XX   XX   XX   XX
+)
+
+(deflayer raise
+  XX   _    _    _    _    _    XX   _    -    =    [    ]    XX   XX
+  XX   1    2    3    4    5    XX   6    7    8    9    0    XX   XX
+  XX   _    _    _    _    _    XX   _    _    _    {    }    XX
+  XX   XX   XX   XX   _    _    _    _    XX   XX   XX   XX
+  XX   XX   XX             XX             XX   XX   XX   XX
+)
+
+
+#| -------------- H-J combo to Backspace -------------- |#
+
+(deflayer h_combo
+  XX   _    _    _    _    _    XX   _    _    _    _    _    XX   XX
+  XX   _    _    _    _    _    XX   h    bspc _    _    _    XX   XX
+  XX   _    _    _    _    _    XX   _    _    _    _    _    XX
+  XX   XX   XX   _    _    XX   XX   _    _    XX   XX   XX
+  XX   XX   XX             XX             XX   XX   XX   XX
+)
+
+(deflayer j_combo
+  XX   _    _    _    _    _    XX   _    _    _    _    _    XX   XX
+  XX   _    _    _    _    _    XX   bspc j    _    _    _    XX   XX
+  XX   _    _    _    _    _    XX   _    _    _    _    _    XX
+  XX   XX   XX   _    _    XX   XX   _    _    XX   XX   XX
+  XX   XX   XX             XX             XX   XX   XX   XX
+)

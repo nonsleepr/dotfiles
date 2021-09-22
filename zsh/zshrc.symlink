@@ -1,6 +1,3 @@
-# Emacs mode
-#set -o emacs
-
 # shortcut to this dotfiles path is $DOTFILES
 DOTFILES=$( cd "$(dirname $(readlink "$HOME/.zshrc"))/.."; pwd -P )
 PARENT_DOTFILES=$(cd $DOTFILES; git rev-parse --show-superproject-working-tree)
@@ -82,10 +79,9 @@ export WORDCHARS=
 autoload -z edit-command-line
 zle -N edit-command-line
 
-# Vi mode
-set -o vi
+# bindkey -v  # Vi mode
+bindkey -e  # Emacs mode
 # bindkey "^X^E" edit-command-line
-bindkey -v
 bindkey "^N" forward-word
 bindkey "^X^L" fzf-history-widget
 bindkey "^R" fzf-history-widget
