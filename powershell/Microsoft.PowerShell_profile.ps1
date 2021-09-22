@@ -6,6 +6,15 @@ Set-PoshPrompt -Theme pure
 Set-PSReadLineOption -Colors @{"Parameter" = [ConsoleColor]::Blue}
 Set-PSReadLineOption -Colors @{"Operator" = [ConsoleColor]::White}
 
+# File highlighting
+$PSStyle.FileInfo.Directory = $PSStyle.Foreground.Blue
+$PSStyle.FileInfo.SymbolicLink = $PSStyle.Italic + $PSStyle.Foreground.Blue + $PSStyle.Background.DarkGray
+$PSStyle.FileInfo.Executable = $PSStyle.Foreground.Green
+$PSStyle.FileInfo.Extension.Add(".py", $PSStyle.Foreground.Green)
+$PSStyle.FileInfo.Extension.Add(".rb", $PSStyle.Foreground.Green)
+$PSStyle.FileInfo.Extension.Add(".sh", $PSStyle.Foreground.Green)
+
+
 #Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView
