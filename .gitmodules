@@ -82,9 +82,9 @@
 [submodule "vim/vim.symlink/bundle/fzf"]
 	path = vim/vim.symlink/bundle/fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule ".\\neovim\\config-nvim\\bundle\\telescope.nvim"]
-	path = .\\neovim\\config-nvim\\bundle\\telescope.nvim
-	url = https://github.com/nvim-telescope/telescope.nvim
-[submodule ".\\neovim\\config-nvim\\bundle\\plenary.nvim"]
-	path = .\\neovim\\config-nvim\\bundle\\plenary.nvim
+[submodule "neovim/config-nvim/bundle/plenary.nvim"]
+	path = neovim/config-nvim/bundle/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "neovim/config-nvim/bundle/telescope.nvim"]
+	path = neovim/config-nvim/bundle/telescope.nvim
+	url = https://github.com/nvim-lua/telescope.nvim
