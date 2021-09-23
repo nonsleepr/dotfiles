@@ -168,10 +168,13 @@ set undoreload=10000        " number of lines to save for undo
 " CamelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
+let s:fzf_vim = '/usr/share/doc/fzf/examples/plugin/fzf.vim'
 " FZF installed by homebrew
 "execute 'source '.systemlist("brew --prefix")[0].'/opt/fzf/plugin/fzf.vim'
 " FZF installed in Debian
-execute 'source /usr/share/doc/fzf/examples/plugin/fzf.vim'
+if filereadable(s:fzf_vim)
+  execute 'source '.s:fzf_vim
+end
 
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader><Leader>u :UndotreeToggle<CR>
