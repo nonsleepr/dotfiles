@@ -1,6 +1,18 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-source ~/.vimrc
+lua << EOF
+if vim.fn.has('win32') then
+  vim.g.my_vimrc = '~\\_vimrc'
+  vim.g.my_vimfiles = '~\\vimfiles'
+else
+  vim.g.my_vimrc = '~/.vimrc'
+  vim.g.my_vimfiles = '~/.vim'
+end
+
+vim.opt.runtimepath:prepend(vim.g.my_vimfiles)
+vim.opt.runtimepath:append(vim.g.my_vimfiles..'/after')
+
+vim.o.packpath = vim.o.runtimepath
+vim.cmd ('source '..vim.g.my_vimrc)
+EOF
 
 nnoremap <Leader>f :Telescope find_files<CR>
 nnoremap <Leader>g :lua require'telescope.builtin'.live_grep{ vimgrep_arguments = {'ag', '-i', '--vimgrep', '--noheading', '--hidden', '--smart-case'} }<cr>

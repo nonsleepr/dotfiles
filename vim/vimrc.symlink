@@ -1,3 +1,13 @@
+if !exists('g:my_vimrc')
+  if has('win32')
+    let g:my_vimrc = '~\_vimrc'
+    let g:my_vimfiles = '~\vimfiles'
+  else
+    let g:my_vimrc = '~/.vimrc'
+    let g:my_vimfiles = '~/.vim'
+  endif
+end
+
 filetype plugin indent on
 syntax on
 set tabstop=2
@@ -36,7 +46,7 @@ set path=src/** " TODO: Instead of hardcoding, discover available dirs less igno
 set wildignore+=**/.git/**,**/project/project/**,**/target/**
 
 " Activate Pathogen
-set runtimepath+=~/.vim/bundle/vim-pathogen
+execute 'set runtimepath+='.g:my_vimfiles.'/bundle/vim-pathogen'
 execute pathogen#infect()
 
 let g:tmuxcomplete#trigger = 'omnifunc'
