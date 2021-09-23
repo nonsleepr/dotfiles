@@ -13,3 +13,6 @@ $dotfilesRoot = Split-Path -Parent $scriptRoot
 
 # Git Ignore
 New-Item -Path $Env:UserProfile\.gitignore -ItemType SymbolicLink -Value $dotfilesRoot\git\gitignore.symlink
+
+# Neovim config
+New-Item -Path $Env:LocalAppData\nvim -ItemType SymbolicLink -Value $dotfilesRoot\neovim\config-nvim
