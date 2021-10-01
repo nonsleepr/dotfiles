@@ -6,7 +6,7 @@ if !exists('g:my_vimrc')
     let g:my_vimrc = '~/.vimrc'
     let g:my_vimfiles = '~/.vim'
   endif
-end
+endif
 
 filetype plugin indent on
 syntax on

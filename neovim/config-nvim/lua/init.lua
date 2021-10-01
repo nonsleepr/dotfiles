@@ -1,4 +1,4 @@
-if vim.fn.has('win32') then
+if vim.fn.has('win32') > 0 then
   vim.g.my_vimrc = '~\\_vimrc'
   vim.g.my_vimfiles = '~\\vimfiles'
 else
