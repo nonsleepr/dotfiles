@@ -52,8 +52,9 @@ execute pathogen#infect()
 let g:tmuxcomplete#trigger = 'omnifunc'
 
 set background=dark
-set termguicolors
-colorscheme solarized8
+"set termguicolors  " It messes things up for some reason making colors crazy
+let g:neosolarized_contrast = "low"
+colorscheme NeoSolarized
 
 " Always show statusline
 set laststatus=2
