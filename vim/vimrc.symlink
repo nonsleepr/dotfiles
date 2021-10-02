@@ -31,7 +31,11 @@ set nocompatible
 set diffopt+=iwhite
 
 au FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
+" Indent hash-commented lines on >>
+" See https://stackoverflow.com/a/9982977
 inoremap # X#
+
+
 
 " Allow non-saved buffers
 " set hidden
@@ -87,6 +91,10 @@ set numberwidth=2
 "au WinLeave,BufLeave * :set norelativenumber nonumber
 "au WinEnter,BufEnter * :set relativenumber number
 
+
+" Ctrl+Backspace as Ctrl+W
+inoremap  
+
 " Update tags
 nnoremap <Leader>ts :silent !ctags -R src/ --exclude=target<CR>:redraw!<CR>
 
@@ -141,8 +149,8 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 
-xmap <Leader>a :EasyAlign<CR>
-nmap <Leader>a :EasyAlign<CR>
+xmap <Leader>a :LiveEasyAlign<CR>
+nmap <Leader>a :LiveEasyAlign<CR>
 
 let g:easy_align_delimiters = {
 \ '/': {
