@@ -88,3 +88,6 @@
 [submodule "neovim/config-nvim/bundle/telescope.nvim"]
 	path = neovim/config-nvim/bundle/telescope.nvim
 	url = https://github.com/nvim-lua/telescope.nvim
+[submodule "tmux/tmux.symlink/plugins/tpm"]
+	path = tmux/tmux.symlink/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
