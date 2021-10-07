@@ -1,5 +1,6 @@
 Import-Module posh-git
 Import-Module oh-my-posh
+Import-Module ZLocation
 Set-PoshPrompt -Theme pure
 
 # Fix Solarized Dark colors in Windows Terminal
@@ -38,4 +39,7 @@ function Start-Neovim {
 New-Alias vi Start-Neovim
 
 # === Scala ===
-$Env:COURSIER_HOME = $Env:AppData.Replace("\", "/") + "/Coursier"
+
+If ($IsWindows) {
+  $Env:COURSIER_HOME = $Env:AppData.Replace("\", "/") + "/Coursier"
+}
