@@ -54,6 +54,7 @@ highlight CursorLineNr ctermbg=0
 ]]
 
 -- Rainbow parentheses
+--[[
 vim.g.rbpt_colorpairs = {
   { '13', '#6c71c4' },
   { '5',  '#d33682' },
@@ -66,6 +67,10 @@ vim.g.rbpt_colorpairs = {
 }
 vim.g.rbpt_max = 8
 vim.g.rbpt_loadcmd_toggle = 0
+
+-- let g:rainbow#max_level = 16
+-- let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+--]]
 
 vim.g.easy_align_delimiters = {
   ['/'] = {
@@ -119,11 +124,12 @@ autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
 
 autocmd StdinReadPre * let s:std_in=1
 
-autocmd Syntax * RainbowParenthesesLoadBraces
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-
-autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParentheses
+" autocmd Syntax * RainbowParenthesesLoadBraces
+" autocmd Syntax * RainbowParenthesesLoadRound
+" autocmd Syntax * RainbowParenthesesLoadSquare
+" 
+" autocmd VimEnter * RainbowParenthesesToggle
 
 " via https://vimrcfu.com/snippet/186
 " let terminal resize scale the internal windows
@@ -148,11 +154,10 @@ vim.g.vimwiki_list = {{
 }}
 vim.g.taskwiki_markup_syntax = 'markdown'
 
+-- TODO: Port or remove that block
 --[[
 let g:tmuxcomplete#trigger = 'omnifunc'
---]]
 
---[[
 " Shortcut to vertically split open file in ':' mode
 :cnoreabbrev <expr> vsf ((getcmdtype() is# ':' && getcmdline() is# 'vsf')?('vert sf'):('vsf'))
 --]]

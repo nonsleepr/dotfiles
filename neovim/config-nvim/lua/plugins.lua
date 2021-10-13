@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
   use 'junegunn/fzf.vim'
   use 'junegunn/fzf'
   use 'Vimjas/vim-python-pep8-indent'
-  use 'kien/rainbow_parentheses.vim'
+  use 'junegunn/rainbow_parentheses.vim' -- TODO: See why it doesn't work
   use 'wellle/targets.vim'
   use 'mbbill/undotree'
   use 'junegunn/vim-easy-align'
