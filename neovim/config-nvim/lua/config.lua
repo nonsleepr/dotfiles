@@ -128,8 +128,10 @@ autocmd Syntax * RainbowParentheses
 " autocmd Syntax * RainbowParenthesesLoadBraces
 " autocmd Syntax * RainbowParenthesesLoadRound
 " autocmd Syntax * RainbowParenthesesLoadSquare
-" 
 " autocmd VimEnter * RainbowParenthesesToggle
+
+" Enter terminal on open
+autocmd TermOpen * startinsert
 
 " via https://vimrcfu.com/snippet/186
 " let terminal resize scale the internal windows

@@ -48,22 +48,16 @@ vim.api.nvim_set_keymap('n', '<Leader>g', ":Telescope live_grep<CR>", { noremap 
 -- nnoremap <Leader>g :lua require'telescope.builtin'.live_grep{ vimgrep_arguments = {'ag', '-i', '--vimgrep', '--noheading', '--hidden', '--smart-case'} }<cr>
 
 vim.api.nvim_set_keymap('t', '<Esc><Esc>', '<C-\\><C-N>', { noremap = true, silent = true })
+-- Paste in terminal mode
+--vim.api.nvim_set_keymap('t', '<C-R><C-R>', '<C-\\><C-N>"???pi', { noremap = true, silent = true, expr = true })
+-- Works except for = register (expression)
+vim.cmd [[ tnoremap <expr> <C-R><C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi' ]]
+
+-- Clear the screen in terminal mode
+vim.api.nvim_set_keymap('t', '<C-L>', '<C-\\><C-N>:set scrollback=1<CR>i<C-L><C-\\><C-N>:set scrollback=10000<CR>i', { noremap = true, silent = true })
 
 -- TODO: Translate the block below
 --[[
-" Paste in terminal mode
-" Works except for = register (expression)
-tnoremap <expr> <C-R><C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-
-" Move between windows in terminal mode
-":tnoremap <C-h> <C-\><C-N><C-w>h
-":tnoremap <C-j> <C-\><C-N><C-w>j
-":tnoremap <C-k> <C-\><C-N><C-w>k
-":tnoremap <C-l> <C-\><C-N><C-w>l
-
-Clear the screen in terminal mode
-.api.nvim_set_keymap('t', '<C-L>', '<C-\\><C-N>:set scrollback=1<CR>i<C-L><C-\\><C-N>:set scrollback=10000<CR>i', { noremap = true, silent = true })
-
 " Stolen from fzf-vim
 function! s:get_git_root()
   let root = split(system('git rev-parse --show-toplevel'), '\n')[0]
