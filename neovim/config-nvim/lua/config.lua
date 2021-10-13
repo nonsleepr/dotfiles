@@ -80,10 +80,10 @@ vim.g.easy_align_delimiters = {
 }
 
 -- via https://vimrcfu.com/snippet/179
-vim.o.undofile     = true               -- Save undo's after file closes
-vim.o.undodir      = '$HOME/.vim_undo'  -- where to save undo histories
-vim.o.undolevels   = 1000               -- How many undos
-vim.o.undoreload   = 10000              -- number of lines to save for undo
+vim.o.undofile     = true                         -- Save undo's after file closes
+vim.o.undodir      = vim.fn.expand('~/.vim_undo') -- where to save undo histories
+vim.o.undolevels   = 1000                         -- How many undos
+vim.o.undoreload   = 10000                        -- number of lines to save for undo
 
 -- Curly braces arguments
 vim.g.targets_argOpening = '[({[]'
@@ -169,6 +169,39 @@ function! CreaseChanged()
     return gitgutter#fold#is_changed() ? ' *' : ''
 endfunction
 ]]
+
+-- LSP
+
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+vim.o.completeopt = 'menu,menuone,noselect'
+
+-- Setup nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+
+    { name = 'buffer' },
+  }
+})
+
+-- Setup lspconfig.
+-- gopls Installed using the following command
+--   GO111MODULE=on go get golang.org/x/tools/gopls@latest
+require('lspconfig')['gopls'].setup {
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
 
 -- Colorscheme
 vim.o.background = 'dark'

@@ -48,8 +48,11 @@ return require('packer').startup(function(use)
   use 'scr1pt0r/crease.vim' -- Nice folds
   use 'ishan9299/nvim-solarized-lua' -- Colorscheme
 
-  -- Post-install/update hook with neovim command
-  --use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
