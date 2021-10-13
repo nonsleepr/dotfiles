@@ -43,8 +43,11 @@ return require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   --use 'vimwiki/vimwiki'
   --use 'tbabej/taskwiki'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-lua/telescope.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'scr1pt0r/crease.vim' -- Nice folds
   use 'ishan9299/nvim-solarized-lua' -- Colorscheme
 

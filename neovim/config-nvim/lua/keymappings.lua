@@ -41,8 +41,9 @@ vim.api.nvim_set_keymap('i', '+>', '<C-R>=nr2char(8658)<CR>', { noremap = true, 
 vim.api.nvim_set_keymap('i', '_>', '<C-R>=nr2char(8594)<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<_', '<C-R>=nr2char(8592)<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>g', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>af', ":Telescope find_files<CR>", { noremap = true, silent = true }) -- all files
+vim.api.nvim_set_keymap('n', '<Leader>f', ":Telescope git_files<CR>", { noremap = true, silent = true }) -- git files
+vim.api.nvim_set_keymap('n', '<Leader>g', ":Telescope live_grep<CR>", { noremap = true, silent = true })
 -- TODO: Configure Telescope
 -- nnoremap <Leader>g :lua require'telescope.builtin'.live_grep{ vimgrep_arguments = {'ag', '-i', '--vimgrep', '--noheading', '--hidden', '--smart-case'} }<cr>
 
