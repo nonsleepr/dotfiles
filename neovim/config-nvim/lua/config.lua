@@ -269,6 +269,13 @@ require('telescope').setup{
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
 
+-- Lualine
+require('lualine').setup{
+  options = {
+    theme = 'solarized',
+  },
+}
+
 -- Colorscheme
 vim.o.background = 'dark'
 vim.o.termguicolors = true -- It messes things up for some reason making colors crazy

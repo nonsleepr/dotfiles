@@ -57,6 +57,11 @@ return require('packer').startup(function(use)
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
