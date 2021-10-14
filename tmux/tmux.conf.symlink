@@ -1,5 +1,8 @@
 new-session
 
+set -g default-terminal 'tmux-256color'
+set -ga terminal-overrides ',*256col*:Tc'
+
 # vi-copy config
 set-window-option -g mode-keys vi
 
@@ -18,8 +21,6 @@ bind-key -T copy-mode-vi 'v' send -X begin-selection
 bind-key -T copy-mode-vi 'y' send -X copy-selection
 bind-key -T copy-mode-vi Space send -X clear-selection
 bind-key -T copy-mode-vi 'C-v' send -X rectangle-toggle
-
-set -g default-terminal "screen-256color"
 
 # set -g mouse-select-pane on
 # set -g mouse-resize-pane on
@@ -58,9 +59,10 @@ set -g escape-time 10
 
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'seebi/tmux-colors-solarized'
 set -g @plugin 'abhinav/tmux-fastcopy'
 set -g @plugin 'laktak/extrakto'
+set -g @plugin 'seebi/tmux-colors-solarized'
+set -g @colors-solarized 'dark'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
