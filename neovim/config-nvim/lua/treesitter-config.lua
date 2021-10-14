@@ -1,15 +1,11 @@
-if vim.fn.has('win32') > 0 then
-  -- The languages below are build as '.so' even on Windows
-  local ignore_install = {'yaml', 'lua', 'ruby', 'bash', 'python'}
-else
-  local ignore_install = {}
-end
-
+-- Some CPP-based language parsers require libstdc++
+-- On Windows, if the parsers were compiled with mingw installed with choco,
+-- the library could be found in C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin
 require('nvim-treesitter.configs').setup {
   -- one of 'all', 'maintained' (parsers with maintainers), or a list of
   -- languages
-  ensure_installed = { 'go', 'html', 'javascript', 'typescript' },
-  ignore_install = ignore_install, -- List of parsers to ignore installing
+  -- ensure_installed = { 'go', 'html', 'javascript', 'typescript' },
+  -- ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
     --disable = { 'c', 'rust' },  -- list of language that will be disabled
@@ -22,10 +18,10 @@ require('nvim-treesitter.configs').setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
+      init_selection = "<Leader><CR>",
+      scope_incremental = "<Leader><CR>",
+      node_incremental = "<Leader><TAB>",
+      node_decremental = "<Leader><S-TAB>",
     },
   },
   indent = {
