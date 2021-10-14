@@ -55,14 +55,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
 
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = {
-      ':TSUpdate',
-      ':TSInstall go',
-      ':TSInstall python',
-    }
-  }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/playground', run = ':TSInstall query' }
 
   use {
