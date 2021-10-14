@@ -6,7 +6,6 @@ require('config')
 vim.cmd('source '..script_dir..'/autocmd.vim')
 
 require('vimwiki-config')
-require('nerdtree-config')
 require('easyalign-config')
 require('crease-config')
 require('nvim-cmp-config')
