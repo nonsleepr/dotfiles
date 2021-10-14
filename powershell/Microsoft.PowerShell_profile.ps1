@@ -1,6 +1,6 @@
 Import-Module posh-git
 Import-Module oh-my-posh
-Import-Module ZLocation
+Import-Module z
 Set-PoshPrompt -Theme pure
 
 # Fix Solarized Dark colors in Windows Terminal
