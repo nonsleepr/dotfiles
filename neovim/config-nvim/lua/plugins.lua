@@ -27,7 +27,6 @@ return require('packer').startup(function(use)
   use 'junegunn/fzf.vim'
   use 'junegunn/fzf'
   use 'Vimjas/vim-python-pep8-indent'
-  use 'junegunn/rainbow_parentheses.vim' -- TODO: See why it doesn't work
   use 'mbbill/undotree'
   use 'junegunn/vim-easy-align'
   use 'tpope/vim-fugitive'
@@ -58,6 +57,7 @@ return require('packer').startup(function(use)
   use { 'nvim-treesitter/playground', run = ':TSInstall query' }
   --use 'wellle/targets.vim'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'p00f/nvim-ts-rainbow'
 
   use {
     'hoob3rt/lualine.nvim',

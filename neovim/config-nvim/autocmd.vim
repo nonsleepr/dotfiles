@@ -9,12 +9,6 @@ autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
 
 autocmd StdinReadPre * let s:std_in=1
 
-autocmd Syntax * RainbowParentheses
-" autocmd Syntax * RainbowParenthesesLoadBraces
-" autocmd Syntax * RainbowParenthesesLoadRound
-" autocmd Syntax * RainbowParenthesesLoadSquare
-" autocmd VimEnter * RainbowParenthesesToggle
-
 " Enter terminal on open
 autocmd TermOpen * startinsert
 
@@ -28,6 +22,3 @@ autocmd VimResized * :wincmd =
 " Remove line numbers for inactive windows
 "autocmd WinLeave,BufLeave * :set norelativenumber nonumber
 "autocmd WinEnter,BufEnter * :set relativenumber number
-
-" NERDTree
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
