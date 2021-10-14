@@ -1,8 +1,15 @@
+if vim.fn.has('win32') > 0 then
+  -- The languages below are build as '.so' even on Windows
+  local ignore_install = {'yaml', 'lua', 'ruby', 'bash', 'python'}
+else
+  local ignore_install = {}
+end
+
 require('nvim-treesitter.configs').setup {
   -- one of 'all', 'maintained' (parsers with maintainers), or a list of
   -- languages
   ensure_installed = { 'go', 'html', 'javascript', 'typescript' },
-  --ignore_install = { 'javascript' }, -- List of parsers to ignore installing
+  ignore_install = ignore_install, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
     --disable = { 'c', 'rust' },  -- list of language that will be disabled
@@ -41,7 +48,31 @@ require('nvim-treesitter.configs').setup {
       goto_node = '<cr>',
       show_help = '?',
     },
-  }
+  },
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim 
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["ia"] = "@parameter.inner",
+
+        -- Or you can define your own textobjects like this
+        ["aa"] = {
+          -- TODO: Figure out why that one doesn't work
+          go = "(parameter_declaration) @parameters",
+        },
+        --]]
+      },
+    },
+  },
 }
 
 -- vim.o.foldmethod = 'expr'
