@@ -25,9 +25,12 @@ vim.opt.wildignore:append('**/.git/**,**/project/project/**,**/target/**')
 vim.o.laststatus = 2
 vim.opt.mouse:append('a')
 
+-- Not sure I need this anymore
+--[[
 if string.find(vim.env.TERM, 'xterm') == 1 then
   vim.o.ttymouse = 'xterm2'
 end
+]]--
 
 vim.o.tags = 'tags;/'
 vim.o.number = true
