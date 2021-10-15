@@ -16,9 +16,6 @@ vim.g.mapleader = ' '
 -- Ctrl+Backspace as Ctrl+W
 vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', { noremap = true, silent = true })
 
--- Update tags
-vim.api.nvim_set_keymap('n', '<Leader>ts', '!ctags -R src/ --exclude=target<CR>:redraw!<CR>', { noremap = true, silent = true })
-
 vim.api.nvim_set_keymap('n', '<Leader><Space>', ':noh<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Tab>', '%', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<Tab>', '%', { noremap = true, silent = true })
@@ -80,3 +77,5 @@ command! GDFiles call fzf#run(fzf#wrap('gdfiles', {
 
 nnoremap <Leader>d :GDFiles<CR>
 --]]
+vim.api.nvim_set_keymap('n', '<Leader>pi', ':PackerInstall<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>pu', ':PackerUpdate<CR>', { noremap = true, silent = true })

@@ -80,3 +80,5 @@ require('nvim-treesitter.configs').setup {
 
 -- vim.o.foldmethod = 'expr'
 -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+--
+vim.api.nvim_set_keymap('n', '<Leader>tsh', ':TSHighlightCapturesUnderCursor<CR>', { noremap = true, silent = true })
