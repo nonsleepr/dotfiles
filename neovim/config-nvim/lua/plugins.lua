@@ -15,8 +15,8 @@ require('packer').startup({function(use)
   use 'wbthomason/packer.nvim'
 
   use 'bkad/CamelCaseMotion'
-  use 'junegunn/fzf.vim'
-  use 'junegunn/fzf'
+  --use 'junegunn/fzf.vim'
+  --use 'junegunn/fzf'
   use 'Vimjas/vim-python-pep8-indent'
   use 'mbbill/undotree'
   use 'junegunn/vim-easy-align'
@@ -38,7 +38,9 @@ require('packer').startup({function(use)
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'scr1pt0r/crease.vim' -- Nice folds
-  use 'ishan9299/nvim-solarized-lua' -- Colorscheme
+  use {'ellisonleao/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
+  use 'lifepillar/vim-solarized8'
+  use 'nonsleepr/lush-solarized.nvim'
 
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
