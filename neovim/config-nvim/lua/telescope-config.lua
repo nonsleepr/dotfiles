@@ -33,6 +33,9 @@ require('telescope').setup{
     git_files = {
       theme = "dropdown",
     },
+    grep_string = {
+      theme = "dropdown",
+    },
     live_grep = {
       theme = "dropdown",
     },
@@ -58,4 +61,5 @@ require('telescope').load_extension('fzf')
 
 vim.api.nvim_set_keymap('n', '<Leader>af', ":Telescope find_files<CR>", { noremap = true, silent = true }) -- all files
 vim.api.nvim_set_keymap('n', '<Leader>f', ":Telescope git_files<CR>", { noremap = true, silent = true }) -- git files
-vim.api.nvim_set_keymap('n', '<Leader>g', ":Telescope live_grep<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>g', ":Telescope grep_string<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>l', ":Telescope live_grep<CR>", { noremap = true, silent = true })

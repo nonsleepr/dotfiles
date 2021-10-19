@@ -59,9 +59,10 @@ require('nvim-treesitter.configs').setup {
         ["ac"] = "@class.outer",
         ["ic"] = "@class.inner",
         ["ia"] = "@parameter.inner",
+        ["aa"] = "@parameter.outer",
 
         -- Or you can define your own textobjects like this
-        ["aa"] = {
+        ["aA"] = {
           -- TODO: Figure out why that one doesn't work
           go = "(parameter_declaration) @parameters",
         },
