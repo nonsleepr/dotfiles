@@ -83,3 +83,8 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+
+require('lspsaga').init_lsp_saga()
+
+vim.api.nvim_set_keymap('n', '<Leader>dp', ':Lspsaga preview_definition<CR>', { noremap = true, silent = true })
