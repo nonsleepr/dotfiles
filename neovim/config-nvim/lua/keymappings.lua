@@ -79,3 +79,7 @@ nnoremap <Leader>d :GDFiles<CR>
 --]]
 vim.api.nvim_set_keymap('n', '<Leader>pi', ':PackerInstall<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>pu', ':PackerUpdate<CR>', { noremap = true, silent = true })
+
+
+-- Allow `gf` to edit non-existent files
+vim.api.nvim_set_keymap('n', 'gf', ':edit <cfile><CR>', { noremap = true, silent = true })

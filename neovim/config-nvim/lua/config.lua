@@ -73,6 +73,11 @@ if string.find(vim.o.enc, 'utf') == 1 then -- When running in a Unicode environm
 end
 
 vim.o.signcolumn = 'yes'
+
+
+-- Substitute preview
+vim.o.inccommand = 'split'
+
 -- TODO: Port or remove that block
 --[[
 let g:tmuxcomplete#trigger = 'omnifunc'
