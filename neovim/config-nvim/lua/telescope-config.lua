@@ -15,9 +15,15 @@ require('telescope').setup{
         -- map actions.which_key to <C-h> (default: <C-/>)
         -- actions.which_key shows the mappings for your picker,
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-        ["<C-h>"] = "which_key"
+        ["<C-h>"] = "which_key",
+        ["<PageUp>"] = function (prompt_bufnr)
+          require('telescope.actions.set').shift_selection(prompt_bufnr, -5)
+        end,
+        ["<PageDown>"] = function (prompt_bufnr)
+          require('telescope.actions.set').shift_selection(prompt_bufnr, 5)
+        end,
       }
-    }
+    },
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
@@ -27,6 +33,9 @@ require('telescope').setup{
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+    --find_files = {
+    --  theme = "dropdown",
+    --},
     find_files = {
       theme = "dropdown",
     },
