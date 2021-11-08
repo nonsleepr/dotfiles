@@ -20,6 +20,7 @@ vim.o.hidden = true
 vim.o.wildmenu = true
 vim.o.path = 'src/**' -- TODO: Instead of hardcoding, discover available dirs less ignored
 vim.opt.wildignore:append('**/.git/**,**/project/project/**,**/target/**')
+vim.o.foldmethod = 'marker'
 
 -- Always show statusline
 vim.o.laststatus = 2
@@ -59,7 +60,14 @@ vim.o.undodir      = vim.fn.expand('~/.vim_undo') -- where to save undo historie
 vim.o.undolevels   = 1000                         -- How many undos
 vim.o.undoreload   = 10000                        -- number of lines to save for undo
 
+-- via https://www.reddit.com/r/neovim/comments/dagcoe/comment/f24ilvx/
 vim.o.shell = 'pwsh'
+vim.o.shellxquote = ''
+vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command'
+vim.o.shellquote = ''
+vim.o.shellpipe = '| Out-File -Encoding UTF8 %s'
+vim.o.shellredir = '| Out-File -Encoding UTF8 %s'
+
 
 -- listchars - Highlight offending chars
 
@@ -72,6 +80,7 @@ if string.find(vim.o.enc, 'utf') == 1 then -- When running in a Unicode environm
   vim.o.sbr = '↪ '
 end
 
+vim.o.inccommand = 'split'
 vim.o.signcolumn = 'yes'
 
 
@@ -94,3 +103,12 @@ vim.g.targets_argClosing = '[]})]'
 
 vim.g.vimspector_enable_mappings = 'HUMAN'
 
+--[[ Patch fs_symlink to use junction which doesn't require admin rights on Windows ]]--
+local orig_fs_symlink = vim.loop.fs_symlink
+vim.loop.fs_symlink = function(path, new_path, flags, callback)
+  if type(flags) == 'nil' then
+    flags = {}
+  end
+  flags.junction = true
+  return orig_fs_symlink(path, new_path, flags, callback)
+end

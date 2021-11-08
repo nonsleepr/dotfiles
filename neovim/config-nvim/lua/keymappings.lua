@@ -83,3 +83,34 @@ vim.api.nvim_set_keymap('n', '<Leader>pu', ':PackerUpdate<CR>', { noremap = true
 
 -- Allow `gf` to edit non-existent files
 vim.api.nvim_set_keymap('n', 'gf', ':edit <cfile><CR>', { noremap = true, silent = true })
+
+--[[ Permanently highlight selection
+-- Inspired by https://vimtricks.com/p/highlight-specific-lines/
+--]]
+function _G.n_highlight()
+  vim.fn.matchaddpos('VisualNOS', {vim.fn.line('.')})
+end
+
+function _G.v_highlight()
+  local mode = vim.fn.visualmode()
+  local pattern
+  if     mode == 'v' then
+    local _, line_start, col_start = unpack(vim.fn.getpos("'<"))
+    local _, line_end, col_end = unpack(vim.fn.getpos("'>"))
+    pattern = '\\%' .. line_start .. 'l\\%' .. col_start .. 'c\\_.*\\%' .. line_end .. 'l\\%' .. (col_end + 1) .. 'c'
+  elseif mode == 'V' then
+    local line_start = vim.fn.getpos("'<")[2]
+    local line_end = vim.fn.getpos("'>")[2]
+    pattern = '\\%' .. line_start .. 'l\\_.*\\%' .. line_end .. 'l'
+  elseif mode == '\x16' then -- C-V
+    local _, line_start, col_start = unpack(vim.fn.getpos("'<"))
+    local _, line_end, col_end = unpack(vim.fn.getpos("'>"))
+    pattern = '\\%>' .. (line_start - 1) .. 'l\\%<' .. (line_end + 1) .. 'l\\%' .. col_start .. 'c.*\\%' .. (col_end + 1) .. 'c'
+  end
+  vim.fn.matchadd('VisualNOS', pattern)
+  print(pattern)
+end
+
+vim.api.nvim_set_keymap('n', '<Leader>hl', ':lua _G.n_highlight()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<Leader>hl', ':lua _G.v_highlight()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>hc', ':call clearmatches()<CR>', { noremap = true, silent = true })
