@@ -2,6 +2,7 @@ vim.cmd('filetype plugin indent on')
 vim.o.syntax = 'on'
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+vim.o.shiftround = true
 vim.o.softtabstop = 2
 vim.o.expandtab = true
 vim.o.showmode = true
@@ -112,3 +113,8 @@ vim.loop.fs_symlink = function(path, new_path, flags, callback)
   flags.junction = true
   return orig_fs_symlink(path, new_path, flags, callback)
 end
+
+-- Change the direction of new splits
+-- via https://vimtricks.com/p/open-splits-more-naturally/
+vim.o.splitbelow = true
+vim.o.splitright = true
