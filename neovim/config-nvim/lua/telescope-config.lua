@@ -24,6 +24,14 @@ require('telescope').setup{
         end,
       }
     },
+    layout_strategy = "vertical",
+    layout_config = {
+      preview_height = 0.65,
+      width = 0.95,
+      height = 0.70,
+      preview_cutoff = 1,
+      prompt_position = "top",
+    },
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
@@ -33,21 +41,6 @@ require('telescope').setup{
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
-    --find_files = {
-    --  theme = "dropdown",
-    --},
-    find_files = {
-      theme = "dropdown",
-    },
-    git_files = {
-      theme = "dropdown",
-    },
-    grep_string = {
-      theme = "dropdown",
-    },
-    live_grep = {
-      theme = "dropdown",
-    },
   },
   extensions = {
     -- Your extension configuration goes here:
