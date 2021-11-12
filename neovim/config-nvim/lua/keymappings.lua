@@ -21,7 +21,6 @@ vim.api.nvim_set_keymap('n', '<Tab>', '%', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<Tab>', '%', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>f', ':Files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader><Leader>u', ':UndotreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>u', ':GitGutterUndoHunk<CR>', { noremap = true, silent = true })
 
 -- C-h,j,k,l navigation for windows
 vim.api.nvim_set_keymap('n', '<C-H>', '<C-W>h', { noremap = true, silent = true })

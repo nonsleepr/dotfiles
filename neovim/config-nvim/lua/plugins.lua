@@ -21,7 +21,16 @@ require('packer').startup({function(use)
   use 'mbbill/undotree'
   use 'junegunn/vim-easy-align'
   use 'tpope/vim-fugitive'
-  use 'airblade/vim-gitgutter'
+  -- use 'airblade/vim-gitgutter'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('gitsigns').setup{
+        current_line_blame = true,
+      }
+    end,
+  }
   use 'tpope/vim-repeat'
   use 'derekwyatt/vim-scala'
   use 'tpope/vim-surround'
