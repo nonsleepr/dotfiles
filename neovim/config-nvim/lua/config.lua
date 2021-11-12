@@ -54,6 +54,7 @@ highlight ColorColumn ctermbg=0
 highlight LineNr ctermfg=grey ctermbg=0
 highlight CursorLineNr ctermbg=0
 ]]
+vim.o.cursorline = true
 
 -- via https://vimrcfu.com/snippet/179
 vim.o.undofile     = true                         -- Save undo's after file closes
