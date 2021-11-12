@@ -12,7 +12,6 @@ require('telescope-config')
 require('treesitter-config')
 require('lsp-config')
 require('camelcase-config')
-require('lualine-config')
 require('dap-config')
 
 --[[ Colorscheme ]]--

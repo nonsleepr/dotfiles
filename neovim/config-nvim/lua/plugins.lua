@@ -34,7 +34,7 @@ require('packer').startup({function(use)
   --use 'tbabej/taskwiki'
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { 'nvim-lua/plenary.nvim' }
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'scr1pt0r/crease.vim' -- Nice folds
@@ -60,7 +60,14 @@ require('packer').startup({function(use)
 
   use {
     'hoob3rt/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    config = function()
+      require('lualine').setup{
+        options = {
+          theme = 'solarized',
+        },
+      }
+    end
   }
 
   use 'mfussenegger/nvim-dap'
