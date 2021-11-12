@@ -61,14 +61,13 @@ vim.o.undodir      = vim.fn.expand('~/.vim_undo') -- where to save undo historie
 vim.o.undolevels   = 1000                         -- How many undos
 vim.o.undoreload   = 10000                        -- number of lines to save for undo
 
--- via https://www.reddit.com/r/neovim/comments/dagcoe/comment/f24ilvx/
+-- see help for {shell-powershell}
 vim.o.shell = 'pwsh'
-vim.o.shellxquote = ''
-vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command'
+vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 vim.o.shellquote = ''
-vim.o.shellpipe = '| Out-File -Encoding UTF8 %s'
-vim.o.shellredir = '| Out-File -Encoding UTF8 %s'
-
+vim.o.shellxquote = ''
 
 -- listchars - Highlight offending chars
 
