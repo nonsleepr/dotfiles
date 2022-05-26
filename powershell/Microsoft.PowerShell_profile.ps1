@@ -1,7 +1,9 @@
 Import-Module posh-git
-Import-Module oh-my-posh
 Import-Module z
-Set-PoshPrompt -Theme pure
+
+Invoke-Expression (oh-my-posh --init --shell pwsh --config "$Env:LocalAppData/Programs/oh-my-posh/themes/pure.omp.json")
+#Import-Module oh-my-posh
+#Set-PoshPrompt -Theme pure
 
 # Fix Solarized Dark colors in Windows Terminal
 Set-PSReadLineOption -Colors @{"Parameter" = [ConsoleColor]::Blue}
