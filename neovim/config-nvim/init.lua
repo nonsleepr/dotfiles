@@ -18,5 +18,6 @@ require('dap-config')
 -- Should be executed last
 vim.o.background = 'dark'
 vim.o.termguicolors = true -- It messes things up for some reason making colors crazy
-vim.g.colors_name = 'lush-solarized'
+--vim.g.colors_name = 'lush-solarized'
+vim.cmd([[colorscheme lush-solarized]])
 

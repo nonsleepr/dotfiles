@@ -64,7 +64,7 @@ require('nvim-treesitter.configs').setup {
         -- Or you can define your own textobjects like this
         ["aA"] = {
           -- TODO: Figure out why that one doesn't work
-          go = "(parameter_declaration) @parameters",
+          query = "(parameter_declaration) @parameters",
         },
         --]]
       },

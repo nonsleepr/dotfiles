@@ -93,8 +93,12 @@ cmp.setup({
 
 -- Add additional capabilities supported by nvim-cmp
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- The following example advertise capabilities to `clangd`.
+require('lspconfig').clangd.setup {
+  capabilities = capabilities,
+}
 
 vim.o.completeopt = 'menu,menuone,noselect'
 
@@ -122,6 +126,4 @@ for _, lsp in ipairs(servers) do
 end
 
 
-require('lspsaga').init_lsp_saga()
-
-vim.api.nvim_set_keymap('n', '<Leader>dp', ':Lspsaga preview_definition<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>dp', ':Lspsaga peek_definition<CR>', { noremap = true, silent = true })

@@ -48,7 +48,7 @@ require('packer').startup({function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'scr1pt0r/crease.vim' -- Nice folds
   use {'ellisonleao/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
-  use 'lifepillar/vim-solarized8'
+  --use 'lifepillar/vim-solarized8'
   use 'nonsleepr/lush-solarized.nvim'
 
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
@@ -64,7 +64,11 @@ require('packer').startup({function(use)
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/playground', run = ':TSInstall query' }
   --use 'wellle/targets.vim'
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use({
+  'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+    requires = 'nvim-treesitter/nvim-treesitter',
+  })
   use 'p00f/nvim-ts-rainbow'
 
   use {
