@@ -1,7 +1,9 @@
 Import-Module posh-git
 Import-Module z
 
-Invoke-Expression (oh-my-posh --init --shell pwsh --config "$Env:LocalAppData/Programs/oh-my-posh/themes/pure.omp.json")
+$Env:STARSHIP_CONFIG = "$PSScriptRoot\..\starship\starship.toml"
+Invoke-Expression (&starship init powershell)
+#Invoke-Expression (oh-my-posh --init --shell pwsh --config "$Env:LocalAppData/Programs/oh-my-posh/themes/pure.omp.json")
 #Import-Module oh-my-posh
 #Set-PoshPrompt -Theme pure
 
