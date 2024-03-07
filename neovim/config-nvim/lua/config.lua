@@ -62,13 +62,15 @@ vim.o.undodir      = vim.fn.expand('~/.vim_undo') -- where to save undo historie
 vim.o.undolevels   = 1000                         -- How many undos
 vim.o.undoreload   = 10000                        -- number of lines to save for undo
 
--- see help for {shell-powershell}
-vim.o.shell = 'pwsh'
-vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
-vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-vim.o.shellquote = ''
-vim.o.shellxquote = ''
+if not vim.fn.exepath("pwsh") then
+  -- see help for {shell-powershell}
+  vim.o.shell = 'pwsh'
+  vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+  vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  vim.o.shellquote = ''
+  vim.o.shellxquote = ''
+  end
 
 -- listchars - Highlight offending chars
 
